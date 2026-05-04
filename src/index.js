@@ -151,6 +151,15 @@ async function playRaceEngine(character1, character2) {
     console.log("-----------------------------");
   }
 }
+function exibirRanking(jogadores) {
+  console.log("\n🏆 RANKING FINAL:\n");
+
+  jogadores
+    .sort((a, b) => b.PONTOS - a.PONTOS)
+    .forEach((jogador, index) => {
+      console.log(`${index + 1}º - ${jogador.NOME}: ${jogador.PONTOS} ponto(s)`);
+    });
+}
 
 async function declareWinner(character1, character2) {
   console.log("Resultado final:");
@@ -169,6 +178,9 @@ async function declareWinner(character1, character2) {
     `🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`
   );
 
-  await playRaceEngine(player1, player2);
-  await declareWinner(player1, player2);
+ await playRaceEngine(player1, player2);
+await declareWinner(player1, player2);
+
+const jogadores = [player1, player2];
+exibirRanking(jogadores);
 })();
